@@ -30,7 +30,7 @@
 #include <Wire.h>
 
 // Reset pin, MFIO pin
-int resPin = 4;
+int resPin = 32;
 int mfioPin = 5;
 
 // Takes address, reset pin, and MFIO pin.
@@ -57,7 +57,7 @@ void setup(){
 
   Serial.begin(115200);
 
-  Wire.begin();
+  Wire.begin(21,22);
   int result = bioHub.begin();
   if (result == 0) //Zero errors!
     Serial.println("Sensor started!");

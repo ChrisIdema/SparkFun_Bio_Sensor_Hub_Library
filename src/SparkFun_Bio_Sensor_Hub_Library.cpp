@@ -1332,7 +1332,7 @@ uint8_t* SparkFun_Bio_Sensor_Hub::readFillArray(uint8_t _familyByte, uint8_t _in
 
   _i2cPort->requestFrom(_address, static_cast<uint8_t>(arraySize + sizeof(statusByte))); 
   statusByte = _i2cPort->read(); // Got it
-  if( statusByte ){// SUCCESS (0x00)
+  if( (statusByte!=0) && (statusByte!=255) ){// SUCCESS (0x00)
     for(uint8_t i = 0; i < arraySize; i++){
       array[i] = 0; 
     }
